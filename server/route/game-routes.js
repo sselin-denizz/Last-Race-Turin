@@ -2,13 +2,18 @@ import express from 'express';
 
 import {
     getStations,
-    getSegments
+    getSegments,
+    getStationLines
 } from '../dao/network-dao.js';
 
 import {
     buildGraph,
     shortestDistance
 } from '../utils/graph-utils.js';
+
+import {
+    validateRoute
+} from '../utils/route-validator-utils.js';
 
 const router = express.Router();
 
@@ -91,6 +96,52 @@ router.post(
 
                 distance
 
+            });
+
+        } catch (err) {
+
+            res
+                .status(500)
+                .json(err);
+
+        }
+
+    }
+);
+
+// POST /api/games/submit
+router.post(
+    '/games/submit',
+
+    isLoggedIn,
+
+    async (req, res) => {
+
+        try {
+
+            const {
+                startStation,
+                destinationStation,
+                route
+            } = req.body;
+
+            const segments =
+                await getSegments();
+
+            const stationLines =
+                await getStationLines();
+
+            const valid =
+                validateRoute(
+                    route,
+                    startStation,
+                    destinationStation,
+                    segments,
+                    stationLines
+                );
+
+            res.json({
+                valid
             });
 
         } catch (err) {
