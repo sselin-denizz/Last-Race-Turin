@@ -3,6 +3,7 @@ import session from "express-session";
 import dotenv from "dotenv";
 
 import passport from "./passport/passport-config.js";
+import authRoutes from './route/auth-routes.js';
 
 dotenv.config();
 
@@ -27,7 +28,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// activate the server
+// routes
+app.use('/api', authRoutes);
+
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
