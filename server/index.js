@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import passport from "./passport/passport-config.js";
 import authRoutes from './route/auth-routes.js';
 import networkRoutes from './route/network-routes.js';
+import gameRoutes from './route/game-routes.js';
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.use(passport.session());
 
 app.use('/api', authRoutes);
 app.use('/api', networkRoutes);
+app.use('/api', gameRoutes);
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);

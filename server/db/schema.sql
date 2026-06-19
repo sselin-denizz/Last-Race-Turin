@@ -64,17 +64,27 @@ CREATE TABLE events (
 );
 
 CREATE TABLE games (
-    id INTEGER PRIMARY KEY,
 
-    userId INTEGER NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-    startStation INTEGER NOT NULL,
-    destinationStation INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+
+    start_station_id INTEGER NOT NULL,
+
+    destination_station_id INTEGER NOT NULL,
+
+    submitted_route TEXT NOT NULL,
 
     score INTEGER NOT NULL,
 
-    playedAt TEXT NOT NULL,
+    played_at TEXT NOT NULL,
 
-    FOREIGN KEY(userId)
-        REFERENCES users(id)
+    FOREIGN KEY(user_id)
+        REFERENCES users(id),
+
+    FOREIGN KEY(start_station_id)
+        REFERENCES stations(id),
+
+    FOREIGN KEY(destination_station_id)
+        REFERENCES stations(id)
 );
