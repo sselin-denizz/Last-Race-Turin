@@ -9,6 +9,7 @@ import {
 
 const router = express.Router();
 
+// GET /api/network
 router.get(
     '/network',
 
