@@ -7,6 +7,7 @@ import {
 } from '../dao/network-dao.js';
 
 import {
+    createGame,
     getEvents
 } from '../dao/game-dao.js';
 
@@ -169,6 +170,28 @@ router.post(
                     route,
                     events
                 );
+            
+            await createGame({
+
+                userId:
+                    req.user.id,
+
+                startStationId:
+                    startStationId,
+
+                destinationStationId:
+                    destinationStationId,
+
+                submittedRoute:
+                    JSON.stringify(route),
+
+                score:
+                    result.finalScore,
+
+                playedAt:
+                    new Date()
+                        .toISOString()
+            });
 
             return res.json({
 
