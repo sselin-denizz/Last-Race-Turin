@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 
 import {
     BrowserRouter,
@@ -6,7 +6,12 @@ import {
     Route
 } from 'react-router-dom';
 
-import { useState } from 'react';
+import {
+    useState
+} from 'react';
+
+import API
+    from './api/API';
 
 import InstructionsPage
     from './pages/InstructionsPage';
@@ -28,7 +33,22 @@ import ResultPage
 
 function App() {
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] =
+        useState(null);
+
+    const [game, setGame] =
+        useState(null);
+
+    async function createNewGame() {
+
+        const gameData =
+            await API.createGame();
+
+        setGame(
+            gameData
+        );
+
+    }
 
     return (
 
@@ -55,7 +75,21 @@ function App() {
                 <Route
                     path="/setup"
                     element={
-                        <SetupPage />
+                        <SetupPage
+                            game={game}
+                            createNewGame={
+                                createNewGame
+                            }
+                        />
+                    }
+                />
+
+                <Route
+                    path="/planning"
+                    element={
+                        <PlanningPage
+                            game={game}
+                        />
                     }
                 />
 
@@ -63,13 +97,6 @@ function App() {
                     path="/ranking"
                     element={
                         <RankingPage />
-                    }
-                />
-
-                <Route
-                    path="/planning"
-                    element={
-                        <PlanningPage />
                     }
                 />
 

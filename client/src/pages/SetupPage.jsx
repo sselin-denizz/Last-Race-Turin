@@ -1,5 +1,4 @@
 import {
-    useState,
     useEffect
 } from 'react';
 
@@ -7,43 +6,30 @@ import {
     useNavigate
 } from 'react-router-dom';
 
-import API
-    from '../api/API';
-
 import './css/SetupPage.css';
 
-function SetupPage() {
-
-    const [game, setGame] =
-        useState(null);
+function SetupPage({
+    game,
+    createNewGame
+}) {
 
     const navigate =
         useNavigate();
 
     useEffect(() => {
 
-        async function loadGame() {
+        if (game)
+            return;
 
-            try {
+        createNewGame()
+            .catch(
+                console.error
+            );
 
-                const gameData =
-                    await API.createGame();
-
-                setGame(
-                    gameData
-                );
-
-            } catch (err) {
-
-                console.error(err);
-
-            }
-
-        }
-
-        loadGame();
-
-    }, []);
+    }, [
+        game,
+        createNewGame
+    ]);
 
     if (!game) {
 
