@@ -7,11 +7,16 @@ import {
     getSegments
 } from '../dao/network-dao.js';
 
+import {
+    isLoggedIn
+} from '../middleware/auth-middleware.js';
+
 const router = express.Router();
 
 // GET /api/network
 router.get(
     '/network',
+    isLoggedIn,
 
     async (req, res) => {
 

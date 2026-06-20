@@ -29,25 +29,15 @@ import {
     executeRoute
 } from '../utils/game-executor-utils.js';
 
+import {
+    isLoggedIn
+} from '../middleware/auth-middleware.js';
+
 const router = express.Router();
-
-function isLoggedIn(req, res, next) {
-
-    if (req.isAuthenticated())
-        return next();
-
-    return res
-        .status(401)
-        .json({
-            error: 'Not authenticated'
-        });
-
-}
 
 // POST /api/games/new
 router.post(
     '/games/new',
-
     isLoggedIn,
 
     async (req, res) => {
