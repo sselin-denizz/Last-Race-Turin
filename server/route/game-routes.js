@@ -7,6 +7,10 @@ import {
 } from '../dao/network-dao.js';
 
 import {
+    getEvents
+} from '../dao/game-dao.js';
+
+import {
     buildGraph,
     shortestDistance
 } from '../utils/graph-utils.js';
@@ -14,6 +18,14 @@ import {
 import {
     validateRoute
 } from '../utils/route-validator-utils.js';
+
+import {
+    getRandomEvent
+} from '../utils/event-utils.js';
+
+import {
+    executeRoute
+} from '../utils/game-executor-utils.js';
 
 const router = express.Router();
 
@@ -140,8 +152,34 @@ router.post(
                     stationLines
                 );
 
-            res.json({
-                valid
+            if (!valid) {
+
+                return res.json({
+                    valid: false,
+                    finalScore: 0
+                });
+
+            }
+
+            const events =
+                await getEvents();
+
+            const result =
+                executeRoute(
+                    route,
+                    events
+                );
+
+            return res.json({
+
+                valid: true,
+
+                finalScore:
+                    result.finalScore,
+
+                journey:
+                    result.journey
+
             });
 
         } catch (err) {
@@ -151,7 +189,6 @@ router.post(
                 .json(err);
 
         }
-
     }
 );
 
