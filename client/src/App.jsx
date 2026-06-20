@@ -7,22 +7,22 @@ import {
 } from 'react-router-dom';
 
 import InstructionsPage
-    from './page/instruction';
+    from './pages/InstructionsPage';
 
 import LoginPage
-    from './page/login';
+    from './pages/LoginPage';
 
 import RankingPage
-    from './page/ranking';
+    from './pages/RankingPage';
 
 import SetupPage
-    from './page/setup';
+    from './pages/SetupPage';
 
 import PlanningPage
-    from './page/planning';
+    from './pages/PlanningPage';
 
 import ResultPage
-    from './page/result';
+    from './pages/ResultPage';
 
 function App() {
 

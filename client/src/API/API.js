@@ -1,5 +1,5 @@
 const SERVER_URL =
-    'http://localhost:3001/api';
+    import.meta.env.VITE_API_URL;
 
 async function login(
     credentials
