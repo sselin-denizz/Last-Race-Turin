@@ -66,3 +66,35 @@ export function getEvents() {
     });
 
 }
+
+export function getRanking() {
+
+    return new Promise((resolve, reject) => {
+
+        const sql = `
+            SELECT
+                users.name,
+                MAX(games.score) AS bestScore
+            FROM games
+            JOIN users
+                ON users.id = games.userId
+            GROUP BY users.id
+            ORDER BY bestScore DESC
+        `;
+
+        db.all(
+            sql,
+            [],
+            (err, rows) => {
+
+                if (err)
+                    reject(err);
+                else
+                    resolve(rows);
+
+            }
+        );
+
+    });
+
+}

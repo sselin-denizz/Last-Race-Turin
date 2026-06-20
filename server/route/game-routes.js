@@ -8,7 +8,8 @@ import {
 
 import {
     createGame,
-    getEvents
+    getEvents,
+    getRanking
 } from '../dao/game-dao.js';
 
 import {
@@ -212,6 +213,30 @@ router.post(
                 .json(err);
 
         }
+    }
+);
+
+// GET /api/games/ranking
+router.get(
+    '/games/ranking',
+
+    async (req, res) => {
+
+        try {
+
+            const ranking =
+                await getRanking();
+
+            res.json(ranking);
+
+        } catch (err) {
+
+            res
+                .status(500)
+                .json(err);
+
+        }
+
     }
 );
 
