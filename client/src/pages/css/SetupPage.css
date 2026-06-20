@@ -1,0 +1,193 @@
+.setup-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 2rem;
+
+    background-image:
+        url('../../assets/parco-valentino.webp');
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+}
+
+.setup-card {
+
+    width: 650px;
+
+    max-width: 95%;
+
+    padding: 2.5rem;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255, 245, 255, 0.25);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    border:
+        1px solid rgba(255,255,255,0.3);
+
+    box-shadow:
+        0 8px 32px rgba(31,38,135,0.15);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.5rem;
+
+    text-align: center;
+
+}
+
+.setup-card h1 {
+
+    color: #370858;
+
+    font-family:
+    'Bitcount Grid Double',
+    sans-serif;
+
+    margin: 0;
+
+    font-size: 3.5rem;
+
+}
+
+.subtitle {
+
+    color: #333437;
+
+}
+
+.mission-card {
+
+    background:
+        rgba(255,255,255,0.18);
+
+    border:
+        1px solid rgba(255,255,255,0.2);
+
+    border-radius: 18px;
+
+    padding: 1rem;
+
+}
+
+.mission-card h2 {
+
+    color: #5b21b6;
+
+    margin-bottom: 0.5rem;
+
+}
+
+.mission-card p {
+
+    font-size: 1.2rem;
+
+    color: #2f2f2f;
+
+}
+
+.objective-badge {
+
+    background:
+        rgba(124,58,237,0.15);
+
+    border:
+        1px solid rgba(124,58,237,0.25);
+
+    color: #4c1d95;
+
+    border-radius: 999px;
+
+    padding: 12px 24px;
+
+    font-weight: 600;
+
+}
+
+.setup-card button {
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    font-family:
+    'Bitcount Grid Double',
+    sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a78bfa,
+            #8b5cf6
+        );
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 1.1rem;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+.setup-card button:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+.floating-icons {
+
+    font-size: 2rem;
+
+    animation:
+        float 3s
+        ease-in-out
+        infinite;
+
+}
+
+@keyframes float {
+
+    0% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-10px);
+    }
+
+    100% {
+        transform:
+            translateY(0);
+    }
+
+}
