@@ -91,6 +91,16 @@ router.post(
                 distance
             );
 
+            req.session.activeGame = {
+
+                startStationId:
+                    start.id,
+
+                destinationStationId:
+                    destination.id
+
+            };
+
             res.json({
 
                 startStation: start,
@@ -122,6 +132,17 @@ router.post(
     async (req, res) => {
 
         try {
+            
+            if (!req.session.activeGame) {
+
+                return res
+                    .status(409)
+                    .json({
+                        error:
+                            'No active game'
+                    });
+
+            }
 
             const {
                 startStationId,

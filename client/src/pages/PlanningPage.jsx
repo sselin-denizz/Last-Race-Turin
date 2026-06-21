@@ -68,6 +68,9 @@ function PlanningPage({
     const navigate =
         useNavigate();
 
+    const [submitted, setSubmitted] = 
+        useState(false);
+
     function addStation(
         stationId
     ) {
@@ -123,10 +126,13 @@ function PlanningPage({
 
                 });
 
+            setSubmitted(true);
+
             navigate(
                 '/result',
                 {
-                    state: result
+                    state: result,
+                    replace: true
                 }
             );
 
@@ -328,7 +334,7 @@ function PlanningPage({
                     }
 
                     disabled={
-                        !destinationReached
+                        !destinationReached || submitted
                     }
 
                 >
