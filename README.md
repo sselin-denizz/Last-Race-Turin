@@ -163,7 +163,7 @@ node script/create-sample-user.js
 ```bash
 cd server
 npm install
-nodemon index.js
+node index.js
 ```
 
 ### Start Client
