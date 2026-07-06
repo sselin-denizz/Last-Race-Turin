@@ -130,13 +130,13 @@ The ports can be modified through the environment variables.
 
 ```bash
 cd server
-node scripts/create-db.js
+node script/create-db.js 
 ```
 
 ### Populate Database
 
 ```bash
-node scripts/seed-db.js
+node script/create-sample-user.js
 ```
 
 ### Reset Database
@@ -150,8 +150,8 @@ rm db/database.sqlite
 Create a fresh database:
 
 ```bash
-node scripts/create-db.js
-node scripts/seed-db.js
+node script/create-db.js 
+node script/create-sample-user.js
 ```
 
 ---
